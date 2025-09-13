@@ -1,0 +1,13 @@
+fastmcp
+starlette
+mcp
+requests
+elevenlabs
+python-dotenv
+Pillow
+numpy
+shotstack-sdk
+srt
+certifi
+PyJWT
+ffmpeg-python

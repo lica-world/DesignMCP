@@ -1,0 +1,54 @@
+services:
+  mcp-server:
+    build: ./mcp-server
+    ports:
+      - "8000:8000"
+    env_file:
+      - ./mcp-server/.env
+    volumes:
+      - ./mcp-server:/app  # Mount source code for live reloading
+      - /app/__pycache__   # Exclude Python cache
+    environment:
+      - PYTHONUNBUFFERED=1
+      - PYTHONPATH=/app
+    command: python server.py
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8000/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 40s
+
+  mcp-assistant:
+    build: ./mcp-assistant
+    ports:
+      - "8501:8501"
+    env_file:
+      - ./mcp-assistant/.env
+    volumes:
+      - ./mcp-assistant:/app  # Mount source code for live reloading
+      - /app/__pycache__      # Exclude Python cache
+      - auth_data:/app/auth_data  # Persistent volume for OAuth files
+    environment:
+      - LICA_MCP_URL=http://mcp-server:8000/mcp
+      - STREAMLIT_SERVER_HEADLESS=true
+      - STREAMLIT_SERVER_ENABLE_CORS=false
+      - STREAMLIT_SERVER_ENABLE_XSRF_PROTECTION=false
+      - STREAMLIT_SERVER_RUN_ON_SAVE=true  # Auto-reload on file changes
+    depends_on:
+      mcp-server:
+        condition: service_healthy
+    command: streamlit run app.py --server.port=8501 --server.address=0.0.0.0 --server.runOnSave=true
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8501"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 40s
+
+volumes:
+  auth_data:
+
+networks:
+  default:
+    name: lica-mcp-network
