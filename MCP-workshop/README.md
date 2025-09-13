@@ -34,7 +34,7 @@ Tip: start by asking `/list_tools` to see all available tools.
 
 ## FastMCP
 
-See example [code](https://github.com/lica-world/HackMIT/blob/main/mcp-server/server.py).
+See example [code](https://github.com/lica-world/DesignMCP/blob/main/mcp-server/server.py).
 
 ## FigmaMCP
 

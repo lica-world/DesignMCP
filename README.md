@@ -23,7 +23,7 @@ The easiest way to get started is to run both the MCP server and assistant toget
 1. **Clone the repository:**
 ```bash
 git clone <repository-url>
-cd HackMIT
+cd DesignMCP
 ```
 
 2. **Set up environment variables:**
@@ -84,7 +84,7 @@ docker compose exec mcp-assistant bash
 ## Project Structure
 
 ```
-HackMIT/
+DesignMCP/
 ├── mcp-server/          # MCP server with AI tools
 ├── mcp-assistant/       # Streamlit assistant interface
 ├── MCP-workshop/        # Workshop materials
