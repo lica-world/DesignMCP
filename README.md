@@ -1,4 +1,3 @@
-
 # LICA at HackMIT
 
 Welcome to **LICA @ HackMIT**! 🎉
@@ -93,5 +92,18 @@ HackMIT/
 └── README.md
 ```
 
+## License
 
+This project is created for educational purposes as part of the LICA @ HackMIT workshop. 
 
+**For Workshop Participants:**
+- You are free to use, modify, and distribute this code for educational and learning purposes
+- Feel free to experiment, build upon, and create derivative works
+- Attribution to the original authors is appreciated but not required
+- This code is provided "as is" without any warranties
+
+**For Commercial Use:**
+- Please contact the Lica team for commercial licensing terms
+- Commercial use requires explicit permission
+
+This workshop material is designed to help you learn about Model Context Protocols (MCPs) and AI-powered multimedia generation. Happy coding! 🚀
